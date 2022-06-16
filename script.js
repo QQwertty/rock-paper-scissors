@@ -22,49 +22,49 @@ function computerPlay() {
 
 function rockPaperScissors(computerSelection, playerSelection) {
     if (computerSelection === 'rock' && playerSelection  === 'scissors' || computerSelection === 'scissors' && playerSelection  === 'paper' || computerSelection === 'paper' && playerSelection  === 'rock') {
-        return l++
+        return round = 'lose'
         // `You lost, ${computerSelection} beats ${playerSelection}`
     } 
     else if (computerSelection === 'rock' && playerSelection  === 'paper' || computerSelection === 'scissors' && playerSelection  === 'rock' || computerSelection === 'paper' && playerSelection  === 'scissors') {
-        return w++
+        return round = 'win'
         // `You won, ${playerSelection} beats  ${computerSelection}`
     }
     else if (computerSelection === 'rock' && playerSelection  === 'rock' || computerSelection === 'scissors' && playerSelection  === 'scissors' || computerSelection === 'paper' && playerSelection  === 'paper') {
-        return t++
+        return round = 'tie'
         // "It's a tie"
-    } 
+    } else {
+        return console.log('error')
+    }
 }
-let wScore = 0
-let lScore = 0
+
 let t = 0
 let w = 0
 let l = 0
 
 function game() {
-  for (let i=1; i<= 5; i++) {
-    const playerSelection = prompt('rock, paper, or scissors?');
+  for (i=1; i<6; i++) {
+    const playerSelection = prompt("rock, paper, or scissors?").toLowerCase();
     const computerSelection = computerPlay();
     rockPaperScissors(computerSelection, playerSelection);
-    if (w++) {
-       return console.log(`${i}: ${w}-${l}, you won this round, ${playerSelection} beats  ${computerSelection}`)
-       
+    if (round == 'lose') {
+      console.log(`${w}-${++l} You lost this round.`)
     }
-    else if (l++) {
-        return console.log(`${i}: ${w}-${l}, you lost this round, ${computerSelection} beats ${playerSelection}`)
-        
-    }
-    else if (t++) {
+    if (round == 'win') {
 
-        console.log(`${i}: ${w}-${l}, It's a tie this round`)
+      console.log(`${++w}-${l} You won this round.`)
+    }
+    if (round == 'tie') {
+
+      console.log(`${w}-${l} You tied this round.`)
     }
   }
-  if (w>l) {
-    console.log('You Won')
+  if (w > l) {
+    console.log('You Won!');
   }
-  if (l>w) {
-    console.log('You Lost')
+  else if (w < l) {
+    console.log('You Lost!');
   }
-  if (w === l) {
-    console.log('Tie!')
+  else if (l===w) {
+    console.log("It's a tie")
   }
 }
