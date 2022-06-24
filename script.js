@@ -20,22 +20,42 @@ function computerPlay() {
 }
 
 
-function rockPaperScissors(computerSelection, playerSelection) {
+document.addEventListener('DOMContentLoaded', () => {
+  
+  const buttons = document.querySelectorAll('#container');
+  const para = document.querySelector(".winloss")
+
+  
+  buttons.forEach((button)=> {
+    button.addEventListener('click', (e) => {
+      const playerSelection = e.target.className
+      rockPaperScissors(computerPlay(), playerSelection)
+  
+    });
+  });
+  function rockPaperScissors(computerSelection, playerSelection) {
     if (computerSelection === 'rock' && playerSelection  === 'scissors' || computerSelection === 'scissors' && playerSelection  === 'paper' || computerSelection === 'paper' && playerSelection  === 'rock') {
-        return round = 'lose'
-        // `You lost, ${computerSelection} beats ${playerSelection}`
+        
+        console.log('lose')
+        //return round = 'lose'
+        para.textContent = `You lost, ${computerSelection} beats ${playerSelection}`
     } 
     else if (computerSelection === 'rock' && playerSelection  === 'paper' || computerSelection === 'scissors' && playerSelection  === 'rock' || computerSelection === 'paper' && playerSelection  === 'scissors') {
-        return round = 'win'
-        // `You won, ${playerSelection} beats  ${computerSelection}`
+        
+        console.log('win')
+        //return round = 'win'
+        para.textContent = `You won, ${playerSelection} beats  ${computerSelection}`
     }
     else if (computerSelection === 'rock' && playerSelection  === 'rock' || computerSelection === 'scissors' && playerSelection  === 'scissors' || computerSelection === 'paper' && playerSelection  === 'paper') {
-        return round = 'tie'
-        // "It's a tie"
+        
+        console.log('tie')
+        //return  round = 'tie'
+        para.textContent = "It's a tie"
     } else {
         return console.log('error')
     }
-}
+};
+
 
 let t = 0
 let w = 0
@@ -68,3 +88,6 @@ function game() {
     console.log("It's a tie")
   }
 }
+
+  });
+
